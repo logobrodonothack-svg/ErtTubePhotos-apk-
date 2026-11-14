@@ -1,0 +1,205 @@
+<resources>
+    <string name="app_name">ErtTube Photos</string>
+    <string name="brand_erttube">ErtTube</string>
+    <string name="brand_photos_badge">PHOTOS</string>
+    <string name="logo_content_description">ErtTube Photos play logo</string>
+
+    <!-- Auth Screen -->
+    <string name="auth_tagline">Your cinematic photo vault, synced everywhere.</string>
+    <string name="auth_tab_sign_in">Sign In</string>
+    <string name="auth_tab_sign_up">Sign Up</string>
+    <string name="auth_sign_in_headline">Welcome back to your studio</string>
+    <string name="auth_sign_in_subtitle">Pick up right where you left off with your synced reels, portraits, and favorite frames.</string>
+    <string name="auth_sign_up_headline">Create your creator vault</string>
+    <string name="auth_sign_up_subtitle">Personalize your studio handle and gallery vibe before connecting your Google account.</string>
+    <string name="auth_google_sign_in">Sign in with Google</string>
+    <string name="auth_google_sign_up">Sign up with Google</string>
+    <string name="auth_signing_in">Connecting to Google…</string>
+    <string name="auth_google_security_note">Secured with Google Sign-In &amp; Firebase</string>
+    <string name="auth_switch_to_sign_up">New to ErtTube Photos? Create a profile</string>
+    <string name="auth_switch_to_sign_in">Already have a studio? Sign in</string>
+
+    <string name="auth_handle_label">Creator handle</string>
+    <string name="auth_handle_placeholder">\@studio_creator</string>
+    <string name="auth_display_name_label">Display name</string>
+    <string name="auth_display_name_placeholder">Alex Rivera</string>
+    <string name="auth_vibe_label">Starter gallery vibe</string>
+
+    <string name="auth_feature_sync_title">Private Cloud Vault</string>
+    <string name="auth_feature_sync_desc">Albums, captions, and favorites stay backed up to your account.</string>
+    <string name="auth_feature_albums_title">Curated Studio Albums</string>
+    <string name="auth_feature_albums_desc">Organize Reels, Portraits, Studio, and Travel shots effortlessly.</string>
+    <string name="auth_feature_picker_title">Private Photo Picker</string>
+    <string name="auth_feature_picker_desc">Import only the photos you choose—no broad storage permissions.</string>
+    <string name="auth_cancelled_notice">Google Sign-In was cancelled. Tap below whenever you are ready to continue.</string>
+    <string name="cd_dismiss_error">Dismiss message</string>
+
+    <!-- Gallery Home -->
+    <string name="gallery_subtitle">Creator Vault</string>
+    <string name="gallery_filter_all">All</string>
+    <string name="gallery_filter_favorites">Favorites</string>
+    <string name="gallery_add_photo">Add Photo</string>
+    <string name="gallery_empty_title">Your vault is ready</string>
+    <string name="gallery_empty_subtitle">Pick a photo from your device or log a studio frame to start building your ErtTube Photos collection.</string>
+    <string name="gallery_empty_cta">Add First Photo</string>
+    <string name="gallery_loading">Loading your studio…</string>
+    <string name="gallery_retry">Retry</string>
+    <string name="cd_open_profile">Open profile and account settings</string>
+    <string name="cd_favorite_toggle">Toggle favorite</string>
+    <string name="cd_close_dialog">Close</string>
+
+    <!-- Add / Edit Photo Sheet -->
+    <string name="sheet_add_photo_title">Add to ErtTube Photos</string>
+    <string name="sheet_edit_photo_title">Edit Photo Details</string>
+    <string name="sheet_pick_from_device">Pick Photo from Device</string>
+    <string name="sheet_change_photo">Change Picked Photo</string>
+    <string name="sheet_no_photo_selected">No image attached yet (optional)</string>
+    <string name="sheet_photo_selected">Photo ready to save</string>
+    <string name="sheet_title_label">Frame title</string>
+    <string name="sheet_title_placeholder">Golden Hour Reel 01</string>
+    <string name="sheet_caption_label">Caption or camera note</string>
+    <string name="sheet_caption_placeholder">35mm prime, soft violet rim light…</string>
+    <string name="sheet_album_label">Album</string>
+    <string name="sheet_favorite_label">Mark as favorite</string>
+    <string name="sheet_save_photo">Save to Vault</string>
+    <string name="sheet_update_photo">Update Frame</string>
+    <string name="sheet_delete_photo">Delete Frame</string>
+
+    <!-- Profile Sheet -->
+    <string name="profile_sheet_title">Studio Profile</string>
+    <string name="profile_photos_count">%1$d frames</string>
+    <string name="profile_favorites_count">%1$d favorites</string>
+    <string name="profile_bio_label">Bio</string>
+    <string name="profile_bio_placeholder">Visual storyteller &amp; photographer</string>
+    <string name="profile_save">Save Profile</string>
+    <string name="profile_sign_out">Sign Out</string>
+    <string name="profile_saved_toast">Profile updated</string>
+
+    <!-- 3-Destination Navigation Bar -->
+    <string name="nav_photos">Photos</string>
+    <string name="nav_collection">Collection</string>
+    <string name="nav_search">Search</string>
+
+    <!-- Top Bar & Backup Banner -->
+    <string name="cd_open_menu">Open account menu and settings</string>
+    <string name="backup_status_on">Backup On</string>
+    <string name="backup_status_off">Backup Off</string>
+    <string name="backup_banner_on_title">Cloud backup is On</string>
+    <string name="backup_banner_off_title">Cloud backup is Off</string>
+    <string name="backup_banner_on_subtitle">Your ErtTube frames and captions sync to your Google vault%1$s.</string>
+    <string name="backup_banner_off_subtitle">Turn on Backup in Photos Settings to keep frames synced across devices.</string>
+    <string name="backup_wifi_suffix"> over Wi-Fi only</string>
+    <string name="backup_open_settings">Settings</string>
+
+    <!-- Menu Page -->
+    <string name="menu_title">Menu</string>
+    <string name="menu_edit_profile">Edit profile</string>
+    <string name="menu_switch_account">Switch account</string>
+    <string name="menu_add_account">Add account</string>
+    <string name="menu_other_accounts_title">Other accounts</string>
+    <string name="menu_other_accounts_empty">No other signed-in accounts on this device yet. Tap Add account to connect another Google account.</string>
+    <string name="menu_switch_to_account">Switch</string>
+    <string name="menu_account_picker_cancelled">Account switch cancelled. Still signed in to current account.</string>
+    <string name="menu_manage_storage">Manage Storage</string>
+    <string name="menu_storage_summary_fmt">%1$s · %2$d frames synced</string>
+    <string name="menu_photos_settings">Photos Settings</string>
+    <string name="menu_photos_settings_subtitle_on">Backup: On · %1$s</string>
+    <string name="menu_photos_settings_subtitle_off">Backup: Off · Tap to configure</string>
+
+    <!-- Manage Storage Sheet -->
+    <string name="storage_sheet_title">Manage Storage</string>
+    <string name="storage_quota_headline">Vault Quota</string>
+    <string name="storage_default_ratio">1 MB / 1 TB</string>
+    <string name="storage_used_detail">%1$d MB used of 1 TB ErtTube cloud vault</string>
+    <string name="storage_cloud_frames_label">Synced frames</string>
+    <string name="storage_local_copies_label">On-device cached photos</string>
+    <string name="storage_clear_cache_cta">Free Local Image Cache</string>
+    <string name="storage_open_backup_cta">Open Photos Settings</string>
+
+    <!-- Photos Settings Sheet -->
+    <string name="photos_settings_title">Photos Settings</string>
+    <string name="photos_settings_backup_title">Backup</string>
+    <string name="photos_settings_backup_desc_on">On — Automatically syncing your frames and captions to your cloud vault.</string>
+    <string name="photos_settings_backup_desc_off">Off — Photos stay in your vault manually until backup is enabled.</string>
+    <string name="photos_settings_wifi_title">Back up over Wi-Fi only</string>
+    <string name="photos_settings_wifi_desc">Pause automatic sync on metered cellular connections.</string>
+    <string name="photos_settings_state_on">On</string>
+    <string name="photos_settings_state_off">Off</string>
+
+    <!-- Collection Page -->
+    <string name="collection_header_title">Collections</string>
+    <string name="collection_header_subtitle">Curated studio albums &amp; smart filters</string>
+    <string name="collection_item_count">%1$d items</string>
+    <string name="collection_single_item">1 item</string>
+    <string name="collection_favorites">Favorites</string>
+    <string name="collection_device_imports">Device Imports</string>
+    <string name="collection_back">All collections</string>
+    <string name="collection_empty_detail">No frames in this collection yet.</string>
+
+    <!-- Search Page -->
+    <string name="search_header_title">Search</string>
+    <string name="search_input_placeholder">Search titles, captions, or albums…</string>
+    <string name="search_clear">Clear search</string>
+    <string name="search_quick_filters">Quick filters</string>
+    <string name="search_results_count">%1$d matching frames</string>
+    <string name="search_all_frames_count">Showing all %1$d frames</string>
+    <string name="search_empty_title">No frames match \"%1$s\"</string>
+    <string name="search_empty_subtitle">Try a different keyword or pick a quick album tag above.</string>
+
+    <!-- Import Google Photos -->
+    <string name="import_google_photos_btn">Import Google Photos</string>
+    <string name="import_google_photos_title">Import Google Photos</string>
+    <string name="import_google_photos_subtitle">Pick one or multiple shots from Google Photos or device albums using the zero-permission Android Cloud Photo Picker.</string>
+    <string name="import_google_photos_menu_subtitle">Bring photos from Google Photos into your ErtTube vault</string>
+    <string name="import_google_photos_album_label">Destination album</string>
+    <string name="import_google_photos_note_label">Caption note (optional)</string>
+    <string name="import_google_photos_note_placeholder">Imported from Google Photos</string>
+    <string name="import_google_photos_favorite_label">Mark imported photos as favorites</string>
+    <string name="import_google_photos_cta">Choose from Google Photos</string>
+    <string name="import_google_photos_importing">Importing photos…</string>
+    <string name="import_google_photos_cancelled">No photos selected from Google Photos.</string>
+
+    <!-- ErtTube Videos -->
+    <string name="videos_filter_label">Videos</string>
+    <string name="videos_badge_fallback">VIDEO</string>
+    <string name="videos_pick_video_button">Pick Video</string>
+    <string name="videos_pick_photo_button">Pick Photo</string>
+    <string name="videos_media_type_label">Media type</string>
+    <string name="videos_media_type_photo">Photo</string>
+    <string name="videos_media_type_video">Video</string>
+    <string name="videos_player_missing_file">No local video file attached yet. Tap Edit Details or import a video clip to play.</string>
+    <string name="videos_player_edit_details">Edit Details</string>
+    <string name="videos_import_include_videos">Include Videos in Google Photos Import</string>
+    <string name="videos_import_videos_only">Videos Only</string>
+    <string name="videos_import_all_media">Photos &amp; Videos</string>
+    <string name="cd_play_video">Play video</string>
+
+    <!-- Collection Bin Page -->
+    <string name="bin_title">Bin</string>
+    <string name="bin_move_to_bin">Move to Bin</string>
+    <string name="bin_restore">Restore</string>
+    <string name="bin_delete_forever">Delete Forever</string>
+    <string name="bin_delete_short">Delete</string>
+    <string name="bin_empty_action">Empty Bin</string>
+    <string name="bin_select_mode">Select</string>
+    <string name="bin_done_mode">Done</string>
+    <string name="bin_select_all">Select all</string>
+    <string name="bin_clear_selection">Clear</string>
+    <string name="bin_selected_count">%1$d selected</string>
+    <string name="bin_empty_title">Bin is empty</string>
+    <string name="bin_empty_subtitle">Photos and videos you delete will appear here so you can restore or permanently delete them.</string>
+    <string name="bin_subtitle_count">%1$d items · Restore or delete forever</string>
+    <string name="bin_subtitle_single">1 item · Restore or delete forever</string>
+    <string name="bin_confirm_empty_title">Empty Bin permanently?</string>
+    <string name="bin_confirm_empty_message">Permanently delete all %1$d items in Bin? This cannot be undone.</string>
+    <string name="bin_confirm_delete_title">Delete permanently?</string>
+    <string name="bin_confirm_delete_message">Permanently delete %1$d selected item(s) and free storage? This cannot be undone.</string>
+    <string name="cancel_action">Cancel</string>
+
+    <!-- Manage Storage Select Multiple -->
+    <string name="storage_select_multiple">Select Multiple</string>
+    <string name="storage_vault_items_title">Vault Items (%1$d)</string>
+    <string name="storage_vault_items_empty">No photos or videos stored in your vault yet.</string>
+    <string name="storage_selection_summary_fmt">%1$d selected · %2$s</string>
+    <string name="storage_item_in_bin_badge">In Bin</string>
+</resources>

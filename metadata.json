@@ -1,0 +1,6 @@
+{
+  "name": "ErtTube Photos",
+  "description": "ErtTube Photos app with authentication and personal photo gallery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

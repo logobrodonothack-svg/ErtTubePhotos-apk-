@@ -1,0 +1,126 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated ErtTube Photos creator profile and gallery preferences.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the profile owner."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name shown in the profile header."
+        },
+        "handle": {
+          "type": "string",
+          "description": "Optional creator handle chosen during Sign Up or profile edit."
+        },
+        "bio": {
+          "type": "string",
+          "description": "Optional short creator bio."
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address from Google Sign-In, visible only to owner."
+        },
+        "preferredGalleryMode": {
+          "type": "string",
+          "enum": ["cinema_reels", "daily_snaps", "studio_shots"],
+          "description": "Preferred visual layout mode chosen during Sign Up."
+        },
+        "backupEnabled": {
+          "type": "boolean",
+          "description": "Whether automatic ErtTube Photos cloud backup is enabled."
+        },
+        "backupWifiOnly": {
+          "type": "boolean",
+          "description": "Whether backup runs only over Wi-Fi."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was created (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was last updated (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "displayName", "createdAt", "updatedAt"]
+    },
+    "PhotoItem": {
+      "title": "PhotoItem",
+      "description": "A user-curated photo entry in ErtTube Photos.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the photo owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Short title for the photo entry."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Optional story or camera note for the photo."
+        },
+        "album": {
+          "type": "string",
+          "enum": ["Reels", "Portraits", "Studio", "Travel"],
+          "description": "Album category for organizing ErtTube Photos."
+        },
+        "localPath": {
+          "type": "string",
+          "description": "Optional local app-private file path or URI string for picked photo."
+        },
+        "favorite": {
+          "type": "boolean",
+          "description": "Whether the user marked this photo or video as a favorite."
+        },
+        "mediaType": {
+          "type": "string",
+          "enum": ["photo", "video"],
+          "description": "Media kind for the item (photo or video)."
+        },
+        "durationMs": {
+          "type": "integer",
+          "description": "Optional video duration in milliseconds."
+        },
+        "trashed": {
+          "type": "boolean",
+          "description": "Whether the item has been moved to the Collection Bin."
+        },
+        "trashedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the item was moved to the Bin."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the photo entry was created (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the photo entry was last updated (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "title", "album", "favorite", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Owner-isolated ErtTube Photos creator profile document."
+    },
+    "/users/{userId}/photos/{photoId}": {
+      "schema": { "$ref": "#/entities/PhotoItem" },
+      "description": "Owner-isolated subcollection of ErtTube Photos entries."
+    }
+  }
+}

@@ -1,0 +1,100 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net: deny all reads and writes by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidUserProfile(data, userId) {
+      return data.userId is string &&
+             data.userId == request.auth.uid &&
+             data.userId == userId &&
+             data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 80 &&
+             data.createdAt is timestamp && data.createdAt <= request.time &&
+             data.updatedAt is timestamp && data.updatedAt <= request.time &&
+             (!('handle' in data) || data.handle == null || (data.handle is string && data.handle.size() <= 40)) &&
+             (!('bio' in data) || data.bio == null || (data.bio is string && data.bio.size() <= 200)) &&
+             (!('email' in data) || data.email == null || (data.email is string && data.email.size() <= 160)) &&
+             (!('preferredGalleryMode' in data) || data.preferredGalleryMode == null || data.preferredGalleryMode in ['cinema_reels', 'daily_snaps', 'studio_shots']) &&
+             (!('backupEnabled' in data) || data.backupEnabled == null || data.backupEnabled is bool) &&
+             (!('backupWifiOnly' in data) || data.backupWifiOnly == null || data.backupWifiOnly is bool);
+    }
+
+    function isValidPhotoItem(data) {
+      return data.userId is string &&
+             data.userId == request.auth.uid &&
+             data.title is string && data.title.size() >= 1 && data.title.size() <= 100 &&
+             data.album in ['Reels', 'Portraits', 'Studio', 'Travel'] &&
+             data.favorite is bool &&
+             data.createdAt is timestamp && data.createdAt <= request.time &&
+             data.updatedAt is timestamp && data.updatedAt <= request.time &&
+             (!('caption' in data) || data.caption == null || (data.caption is string && data.caption.size() <= 400)) &&
+             (!('localPath' in data) || data.localPath == null || (data.localPath is string && data.localPath.size() <= 500)) &&
+             (!('mediaType' in data) || data.mediaType in ['photo', 'video']) &&
+             (!('durationMs' in data) || data.durationMs == null || (data.durationMs is int && data.durationMs >= 0 && data.durationMs <= 86400000)) &&
+             (!('trashed' in data) || data.trashed is bool) &&
+             (!('trashedAt' in data) || data.trashedAt == null || (data.trashedAt is timestamp && data.trashedAt <= request.time));
+    }
+
+    match /users/{userId} {
+      allow get: if isSignedIn() && request.auth.uid == userId && isValidId(userId);
+      allow list: if isSignedIn() && request.auth.uid == userId;
+
+      allow create: if isSignedIn() &&
+                       request.auth.uid == userId &&
+                       isValidId(userId) &&
+                       incoming().keys().hasAll(['userId', 'displayName', 'createdAt', 'updatedAt']) &&
+                       incoming().keys().hasOnly(['userId', 'displayName', 'handle', 'bio', 'email', 'preferredGalleryMode', 'backupEnabled', 'backupWifiOnly', 'createdAt', 'updatedAt']) &&
+                       isValidUserProfile(incoming(), userId);
+
+      allow update: if isSignedIn() &&
+                       request.auth.uid == userId &&
+                       isValidId(userId) &&
+                       isValidUserProfile(incoming(), userId) &&
+                       incoming().userId == existing().userId &&
+                       incoming().createdAt == existing().createdAt &&
+                       incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'handle', 'bio', 'email', 'preferredGalleryMode', 'backupEnabled', 'backupWifiOnly', 'updatedAt']);
+
+      allow delete: if isSignedIn() && request.auth.uid == userId && isValidId(userId);
+
+      match /photos/{photoId} {
+        allow get: if isSignedIn() && request.auth.uid == userId && isValidId(photoId);
+        allow list: if isSignedIn() && request.auth.uid == userId;
+
+        allow create: if isSignedIn() &&
+                         request.auth.uid == userId &&
+                         isValidId(photoId) &&
+                         incoming().keys().hasAll(['userId', 'title', 'album', 'favorite', 'createdAt', 'updatedAt']) &&
+                         incoming().keys().hasOnly(['userId', 'title', 'caption', 'album', 'localPath', 'favorite', 'mediaType', 'durationMs', 'trashed', 'trashedAt', 'createdAt', 'updatedAt']) &&
+                         isValidPhotoItem(incoming());
+
+        allow update: if isSignedIn() &&
+                         request.auth.uid == userId &&
+                         isValidId(photoId) &&
+                         isValidPhotoItem(incoming()) &&
+                         incoming().userId == existing().userId &&
+                         incoming().createdAt == existing().createdAt &&
+                         incoming().diff(existing()).affectedKeys().hasOnly(['title', 'caption', 'album', 'localPath', 'favorite', 'mediaType', 'durationMs', 'trashed', 'trashedAt', 'updatedAt']);
+
+        allow delete: if isSignedIn() && request.auth.uid == userId && isValidId(photoId);
+      }
+    }
+  }
+}
